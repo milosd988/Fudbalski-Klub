@@ -111,9 +111,22 @@ public class PremijerLiga extends PremijerLigaKonf {
 	@Override
 	public Fudbaler najskupljiFudbalerLige() {
 
+		String klub = null;
+		Fudbaler fudbaler = null;
+		double maxPlata = 0;
+		
+		for(Fudbaler f : FudbalskiKlub.getFudbaleri()) {
+			if(f.getGodisnjaZarada() > maxPlata) {
+				maxPlata = f.getGodisnjaZarada();
+				fudbaler = f;
+				
+			}
+		}
+		
+		klub = FudbalskiKlub.getNaziv();
 		
 		
-		return null;
+		return fudbaler;
 	}
 
 	//vraca broj koliko fudbalera ima istog sponzora kao i liga

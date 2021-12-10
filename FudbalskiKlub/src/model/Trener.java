@@ -13,7 +13,7 @@ public class Trener extends Osoba{
 	}
 
 	public Trener(String ime, String prezime, String jmbg, String adresa,
-			double godisnjaZarada, String sponzor, boolean svetskiTopTrener,
+			double godisnjaZarada, String sponzor,
 			int godinaRada, int brojTrofeja) {
 		super(ime, prezime, jmbg, adresa);
 		this.godisnjaZarada = godisnjaZarada;

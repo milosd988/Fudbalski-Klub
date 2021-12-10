@@ -16,7 +16,7 @@ public class Fudbaler extends Osoba {
 
 	public Fudbaler(String ime, String prezime, String jmbg, String adresa, 
 			double nedeljnaPlata, int brojOdigranihSezona, String sponzor, boolean rezerva,
-			double godisnjaZarada, int brojGolovaIAsistencija, String pozicija) {
+			int brojGolovaIAsistencija, String pozicija) {
 		super(ime, prezime, jmbg, adresa);
 		this.nedeljnaPlata = nedeljnaPlata;
 		this.brojOdigranihSezona = brojOdigranihSezona;

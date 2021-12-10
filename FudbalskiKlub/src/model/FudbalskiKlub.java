@@ -7,9 +7,9 @@ import interfejs.IFudbalskiKlub;
 
 public class FudbalskiKlub implements IFudbalskiKlub {
 	
-	private String naziv;
+	private static String naziv;
 	private Trener trener;
-	private List<Fudbaler> fudbaleri = new ArrayList<Fudbaler>(); 
+	private static List<Fudbaler> fudbaleri = new ArrayList<Fudbaler>(); 
 	private int brojZaposlenih;
 	private int brojTrofeja;
 	private double godisnjiIzdaci;
@@ -20,12 +20,11 @@ public class FudbalskiKlub implements IFudbalskiKlub {
 		
 	}
 	
-	public FudbalskiKlub(String naziv, Trener trener, List<Fudbaler> fudbaleri, int brojZaposlenih, int brojTrofeja,
-			double godisnjiIzdaci) {
+	public FudbalskiKlub(String naziv, Trener trener, List<Fudbaler> fudbaleri, int brojTrofeja) {
 		super();
-		this.naziv = naziv;
+		FudbalskiKlub.naziv = naziv;
 		this.trener = trener;
-		this.fudbaleri = fudbaleri;
+		FudbalskiKlub.fudbaleri = fudbaleri;
 		this.brojZaposlenih = fudbaleri.size() + 1;
 		this.brojTrofeja = brojTrofeja;
 		
@@ -37,12 +36,14 @@ public class FudbalskiKlub implements IFudbalskiKlub {
 		this.godisnjiIzdaci = zaradaFudbalera + trener.getGodisnjaZarada();
 	}
 
-	public String getNaziv() {
+	
+
+	public static String getNaziv() {
 		return naziv;
 	}
 
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+	public static void setNaziv(String naziv) {
+		FudbalskiKlub.naziv = naziv;
 	}
 
 	public Trener getTrener() {
@@ -53,12 +54,14 @@ public class FudbalskiKlub implements IFudbalskiKlub {
 		this.trener = trener;
 	}
 
-	public List<Fudbaler> getFudbaleri() {
+	
+
+	public static List<Fudbaler> getFudbaleri() {
 		return fudbaleri;
 	}
 
-	public void setFudbaleri(List<Fudbaler> fudbaleri) {
-		this.fudbaleri = fudbaleri;
+	public static void setFudbaleri(List<Fudbaler> fudbaleri) {
+		FudbalskiKlub.fudbaleri = fudbaleri;
 	}
 
 	public int getBrojZaposlenih() {
@@ -91,15 +94,17 @@ public class FudbalskiKlub implements IFudbalskiKlub {
 				+ brojZaposlenih + ", brojTrofeja=" + brojTrofeja + ", godisnjiIzdaci=" + godisnjiIzdaci + "]";
 	}
 
+	
 	@Override
 	public double najskupljiFudbaler() {
 
+		
 		double maxPlata = 0;
 		
 		for (Fudbaler f : fudbaleri) {
 			if(f.getGodisnjaZarada() > maxPlata) {
 				maxPlata = f.getGodisnjaZarada();
-			
+				
 			}
 		}
 		
@@ -140,13 +145,13 @@ public class FudbalskiKlub implements IFudbalskiKlub {
 				brojFudbalera ++;
 			}
 		}
-		System.out.println("Broj igraca na poziciji je: " + brojFudbalera);
+		
 		
 		return brojFudbalera;
 	}
 
 	@Override
-	public void najJeftinijiFudbalerRezerva() {
+	public double najJeftinijiFudbalerRezerva() {
 
 		double minimalnaZarada = fudbaleri.get(0).getGodisnjaZarada();
 		
@@ -162,6 +167,8 @@ public class FudbalskiKlub implements IFudbalskiKlub {
 								+ " " + f.getPrezime() + ".");
 			}
 		}
+		
+		return minimalnaZarada;
 	}
 	
 	
